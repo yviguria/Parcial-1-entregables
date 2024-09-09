@@ -33,3 +33,30 @@ plt.show()
 
 
 #VER GRAFICOS>
+
+
+#USANDO MISSINGO
+
+#CARGAR ARCHIVO CSV (SE ELIMINO FINAL (1)) Y SE CREO OTRO ARCHIVO BUSQUEDA SCOPUS
+
+!wget https://raw.githubusercontent.com/yviguria/Parcial-1-entregables/main/busqueda_scopus.csv
+import pandas as pd
+collisions = pd.read_csv("https://raw.githubusercontent.com/yviguria/Parcial-1-entregables/main/busqueda_scopus.csv")
+
+import missingno as msn
+msn.matrix(df)
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+# Ajustar el tamaño de la muestra
+sample_size = min(250, len(collisions))
+msn.matrix(collisions.sample(sample_size))
+#SE CORRIGIO CODIGO DE INFORMACION POR EXCEDER 250 TRUE FALSE CON CHATGPT Y FUNCIONO
+#VER GRAFICOS
+
+https://colab.research.google.com/github/inefable12/consultas_scopus_api/blob/main/Consultas_en_SCOPUS_API.ipynb
+
+
+
+
+
+

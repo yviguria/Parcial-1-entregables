@@ -1,0 +1,35 @@
+!pip install pyscopus==1.0.3a2
+from pyscopus import Scopus
+import numpy
+import pandas
+import requests
+key = "249b81ceece6cd8662b8968b0bac229c"
+scopus = Scopus(key)
+s = input("( TITLE-ABS-KEY ( coccidia ) AND TITLE-ABS-KEY ( peru ) AND TITLE-ABS-KEY ( faeces ) )")
+search_df = scopus.search(s, count=200,view='STANDARD')
+from IPython.display import display
+display(search_df)
+search_df.subtype_description.unique()
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+
+# Contar las ocurrencias de cada tipo de publicación y ordenar los datos por el índice
+subtype_description = search_df['subtype_description'].value_counts()
+
+# Crear el gráfico de barras con coloración por tipo de publicación
+ax = sns.barplot(x=subtype_description.index, y=subtype_description.values, palette='viridis')
+
+# Agregar etiquetas y título
+plt.ylabel('Cantidad')
+plt.title('Tipo de publicación')
+
+# Formatear el eje y con un decimal
+ax.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.0f'))
+
+# Mostrar el gráfico
+plt.show()
+
+
+

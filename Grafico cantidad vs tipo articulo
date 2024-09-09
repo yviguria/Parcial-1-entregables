@@ -32,4 +32,4 @@ ax.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.0f'))
 plt.show()
 
 
-
+#VER GRAFICOS>
